@@ -3,235 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TenseGO - Kuasai Bahasa Inggris dengan Mudah</title>
+    <title>TenseGO - Scan, Play, & Master English</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         /* CSS RESET & VARIABLES */
         :root {
             --primary: #4F46E5;
-            --secondary: #818CF8;
+            --secondary: #00E5FF;
+            --accent: #FFEB3B;
             --dark: #1E293B;
             --light: #F8FAFC;
             --white: #FFFFFF;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
-        body {
-            background-color: var(--light);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: var(--light); color: var(--dark); overflow-x: hidden; }
 
         /* NAVBAR */
         nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 5%;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 5%; background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px); position: fixed; width: 100%;
+            top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
-        nav h1 {
-            color: var(--primary);
-            font-weight: 700;
-            font-size: 1.5rem;
+        nav h1 { color: var(--primary); font-weight: 800; font-size: 1.8rem; letter-spacing: -0.5px;}
+        .nav-right { display: flex; align-items: center; gap: 15px; }
+        
+        /* Language Toggle Button */
+        .lang-btn {
+            background: transparent; border: 2px solid var(--dark); color: var(--dark);
+            padding: 6px 12px; border-radius: 20px; font-weight: 600; cursor: pointer;
+            transition: all 0.3s ease; display: flex; align-items: center; gap: 5px;
         }
+        .lang-btn:hover { background: var(--dark); color: var(--white); }
+
         .contact-btn {
-            background: var(--primary);
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background 0.3s;
+            background: var(--dark); color: var(--white); padding: 10px 24px;
+            border-radius: 30px; text-decoration: none; font-weight: 600;
+            transition: all 0.3s ease;
         }
-        .contact-btn:hover {
-            background: var(--dark);
-        }
+        .contact-btn:hover { background: var(--primary); transform: translateY(-2px); }
 
         /* HERO SECTION */
         .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 150px 20px 100px;
+            display: flex; flex-direction: column; align-items: center; text-align: center;
+            padding: 160px 20px 100px;
             background: linear-gradient(135deg, #EEF2FF 0%, #E0E7FF 100%);
+            position: relative; overflow: hidden;
         }
-        .hero h2 {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            color: var(--dark);
+        .hero::before {
+            content: ''; position: absolute; top: -50%; left: -10%; width: 120%; height: 100%;
+            background: radial-gradient(circle, rgba(79,70,229,0.1) 0%, rgba(255,255,255,0) 70%);
+            z-index: 0; pointer-events: none;
         }
-        .hero h2 span {
-            color: var(--primary);
+        .hero-content { position: relative; z-index: 1; max-width: 800px; }
+        .hero-badge {
+            display: inline-block; background: rgba(0, 229, 255, 0.2); color: #008899;
+            padding: 8px 16px; border-radius: 20px; font-weight: 700; font-size: 0.9rem;
+            margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;
         }
-        .hero p {
-            font-size: 1.2rem;
-            color: #475569;
-            max-width: 600px;
-            margin-bottom: 40px;
-        }
+        .hero h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; line-height: 1.1; color: var(--dark); }
+        .hero h2 span { color: var(--primary); }
+        .hero p { font-size: 1.25rem; color: #475569; margin-bottom: 40px; }
+        
         .play-store-btn {
-            display: inline-flex;
-            align-items: center;
-            background: #000;
-            color: #fff;
-            padding: 12px 24px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 1.2rem;
-            font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-flex; align-items: center; background: #000; color: #fff;
+            padding: 14px 32px; border-radius: 12px; text-decoration: none;
+            font-size: 1.2rem; font-weight: 600; transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
-        .play-store-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-        }
-        .play-store-btn img {
-            width: 30px;
-            margin-right: 15px;
-        }
+        .play-store-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(0,0,0,0.25); }
+        .play-store-btn svg { width: 30px; margin-right: 15px; }
 
-        /* FEATURES SECTION */
-        .features {
-            padding: 80px 5%;
-            text-align: center;
+        /* HIGHLIGHT FEATURES */
+        .showcase { padding: 80px 5%; background: var(--white); }
+        .showcase-row {
+            display: flex; align-items: center; justify-content: space-between;
+            max-width: 1100px; margin: 0 auto 100px; gap: 40px;
         }
-        .features h3 {
-            font-size: 2.2rem;
-            margin-bottom: 50px;
-            color: var(--dark);
+        .showcase-row:nth-child(even) { flex-direction: row-reverse; }
+        @media(max-width: 768px) { .showcase-row { flex-direction: column !important; text-align: center; gap: 20px;} }
+        
+        .showcase-text { flex: 1; }
+        .showcase-text h3 { font-size: 2.5rem; margin-bottom: 20px; color: var(--dark); }
+        .showcase-text p { font-size: 1.1rem; color: #64748B; line-height: 1.6; }
+        .showcase-icon { font-size: 3rem; margin-bottom: 10px; display: inline-block;}
+        
+        .showcase-visual { 
+            flex: 1; background: linear-gradient(45deg, #f1f5f9, #e2e8f0); 
+            border-radius: 24px; padding: 40px; box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            display: flex; justify-content: center; align-items: center;
+            min-height: 300px; position: relative; overflow: hidden;
         }
-        .feature-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        
+        /* Visual Decorations */
+        .ar-scanner { 
+            width: 200px; height: 200px; border: 4px solid var(--secondary); border-radius: 20px; position: relative;
         }
-        .feature-card {
-            background: var(--white);
-            padding: 40px 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
-            opacity: 0;
-            transform: translateY(30px);
+        .ar-scanner::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--secondary); box-shadow: 0 0 10px var(--secondary);
+            animation: scanLine 2s linear infinite alternate;
         }
-        .feature-card.show {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes scanLine { 0% { top: 0; } 100% { top: 100%; } }
+
+        .game-bubbles { position: relative; width: 100%; height: 200px; }
+        .bubble {
+            position: absolute; background: var(--primary); color: white; padding: 10px 20px;
+            border-radius: 30px; font-weight: bold; box-shadow: 0 4px 10px rgba(79,70,229,0.3);
+            animation: float 3s ease-in-out infinite;
         }
-        .feature-card:hover {
-            transform: translateY(-10px);
-            border-bottom: 4px solid var(--primary);
-        }
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .feature-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-        .feature-card p {
-            color: #64748B;
-            font-size: 0.95rem;
-        }
+        .b1 { top: 20%; left: 20%; animation-delay: 0s; }
+        .b2 { top: 50%; left: 60%; animation-delay: 1s; background: #EC4899;}
+        .b3 { top: 70%; left: 30%; animation-delay: 0.5s; background: var(--secondary); color: var(--dark);}
+        @keyframes float { 0%, 100% { transform: translateY(0) scale(1); } 50% { transform: translateY(-15px) scale(1.05); } }
 
         /* FOOTER */
-        footer {
-            background: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 50px;
-        }
-        footer a {
-            color: var(--secondary);
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        .footer-links {
-            margin-top: 20px;
-        }
+        footer { background: var(--dark); color: var(--white); text-align: center; padding: 50px 20px 30px; }
+        footer h2 { font-size: 2rem; margin-bottom: 10px;}
+        footer a { color: var(--secondary); text-decoration: none; margin: 0 15px; font-weight: 600;}
+        footer a:hover { text-decoration: underline; color: #fff;}
+        .footer-links { margin: 30px 0; }
     </style>
 </head>
 <body>
 
     <nav>
         <h1>TenseGO</h1>
-        <a href="mailto:cyberefforts@gmail.com" class="contact-btn">Hubungi Kami</a>
+        <div class="nav-right">
+            <button class="lang-btn" id="langToggle">🌐 EN</button>
+            <a href="mailto:cyberefforts@gmail.com" class="contact-btn lang-text" 
+               data-id="Bantuan" data-en="Support">Bantuan</a>
+        </div>
     </nav>
 
     <section class="hero">
-        <h2>Belajar Bahasa Inggris,<br><span>Lebih Cepat & Interaktif</span></h2>
-        <p>TenseGO adalah asisten personalmu untuk menguasai tenses dan grammar. Dilengkapi dengan AI, kuis interaktif, dan tracking progres yang cerdas.</p>
-        
-        <a href="#" class="play-store-btn">
-            <svg viewBox="0 0 512 512" width="30" height="30" style="margin-right:10px;"><path fill="#ffffff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-            Dapatkan di Google Play
-        </a>
+        <div class="hero-content">
+            <div class="hero-badge lang-text" 
+                 data-id="Didukung oleh AI & AR" data-en="Powered by AI & AR">Didukung oleh AI & AR</div>
+            <h2 class="lang-text" 
+                data-id="Jangan Cuma Membaca.<br><span>Rasakan Bahasa Inggris.</span>" 
+                data-en="Don't Just Read.<br><span>Experience English.</span>">Jangan Cuma Membaca.<br><span>Rasakan Bahasa Inggris.</span></h2>
+            <p class="lang-text" 
+               data-id="Pindai duniamu untuk membuat kalimat dan pecahkan gelembung untuk menyempurnakan tata bahasa. TenseGO membuat penguasaan bahasa Inggris jadi interaktif, visual, dan sangat menyenangkan." 
+               data-en="Scan your world to build sentences and pop your way to perfect grammar. TenseGO makes mastering English interactive, visual, and wildly fun.">Pindai duniamu untuk membuat kalimat dan pecahkan gelembung untuk menyempurnakan tata bahasa. TenseGO membuat penguasaan bahasa Inggris jadi interaktif, visual, dan sangat menyenangkan.</p>
+            
+            <a href="#" class="play-store-btn">
+                <svg viewBox="0 0 512 512" width="30" height="30"><path fill="#ffffff" d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+                <span class="lang-text" data-id="Dapatkan di Google Play" data-en="Get it on Google Play">Dapatkan di Google Play</span>
+            </a>
+        </div>
     </section>
 
-    <section class="features" id="features">
-        <h3>Kenapa Memilih TenseGO?</h3>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <div class="feature-icon">🤖</div>
-                <h4>Asisten AI Personal</h4>
-                <p>Fitur chat cerdas untuk membantu kamu berlatih percakapan bahasa Inggris kapan saja dan di mana saja.</p>
+    <section class="showcase">
+        <div class="showcase-row">
+            <div class="showcase-text">
+                <span class="showcase-icon">📷</span>
+                <h3 class="lang-text" data-id="Belajar dari Sekitarmu" data-en="Learn from Your Surroundings">Belajar dari Sekitarmu</h3>
+                <p class="lang-text" 
+                   data-id="Bosan menatap buku? Arahkan kameramu ke benda sehari-hari. <strong>Pemindai AR Real-time</strong> TenseGO mengenali objek dan langsung membuat kalimat bahasa Inggris yang akurat sesuai tenses yang sedang kamu pelajari. Dunia adalah kelasmu." 
+                   data-en="Why stare at textbooks? Point your camera at everyday objects. TenseGO's <strong>Real-time AR Detection</strong> identifies items and instantly generates accurate English sentences based on the tense you want to learn. The world is your classroom.">Bosan menatap buku? Arahkan kameramu ke benda sehari-hari. <strong>Pemindai AR Real-time</strong> TenseGO mengenali objek dan langsung membuat kalimat bahasa Inggris yang akurat sesuai tenses yang sedang kamu pelajari. Dunia adalah kelasmu.</p>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">🎯</div>
-                <h4>Kuis Interaktif</h4>
-                <p>Uji pemahamanmu dengan berbagai tingkat kesulitan kuis yang dirancang khusus untuk meningkatkan skill grammar-mu.</p>
+            <div class="showcase-visual">
+                <div class="ar-scanner"></div>
             </div>
-            <div class="feature-card">
-                <div class="feature-icon">📈</div>
-                <h4>Tracking Progres</h4>
-                <p>Pantau perkembangan belajarmu secara real-time dari waktu ke waktu langsung melalui profilmu.</p>
+        </div>
+
+        <div class="showcase-row">
+            <div class="showcase-text">
+                <span class="showcase-icon">🎈</span>
+                <h3 class="lang-text" data-id="Grammar Pop: Main & Belajar" data-en="Grammar Pop: Play to Learn">Grammar Pop: Main & Belajar</h3>
+                <p class="lang-text" 
+                   data-id="Uji pengetahuanmu dengan game <strong>Grammar Pop</strong> kami yang seru. Pecahkan gelembung kata sesuai urutan tata bahasa yang benar sebelum waktu habis! Bangun kombo dan latih otakmu mengenali struktur kalimat secara instingtif." 
+                   data-en="Test your knowledge with our high-energy <strong>Grammar Pop</strong> game. Pop the floating word bubbles in the correct grammatical order before the timer runs out! Build combos and train your brain to recognize sentence structures instinctively.">Uji pengetahuanmu dengan game <strong>Grammar Pop</strong> kami yang seru. Pecahkan gelembung kata sesuai urutan tata bahasa yang benar sebelum waktu habis! Bangun kombo dan latih otakmu mengenali struktur kalimat secara instingtif.</p>
             </div>
+            <div class="showcase-visual">
+                 <div class="game-bubbles">
+                    <div class="bubble b1">Subject</div>
+                    <div class="bubble b2">Verb</div>
+                    <div class="bubble b3">Object</div>
+                 </div>
+            </div>
+        </div>
+        
+        <div class="showcase-row" style="margin-bottom: 0;">
+             <div class="showcase-text">
+                <span class="showcase-icon">🤖</span>
+                <h3 class="lang-text" data-id="Tutor AI Pribadimu" data-en="Your Personal AI Tutor">Tutor AI Pribadimu</h3>
+                <p class="lang-text" 
+                   data-id="Punya pertanyaan atau butuh teman latihan ngobrol? TenseGO memiliki asisten AI cerdas yang siap bercakap-cakap, mengoreksi kesalahanmu, dan memandumu memahami aturan tata bahasa 24 jam sehari." 
+                   data-en="Got a question or need to practice chatting? TenseGO features an intelligent AI assistant ready to converse, correct your mistakes, and guide you through complex grammar rules 24/7.">Punya pertanyaan atau butuh teman latihan ngobrol? TenseGO memiliki asisten AI cerdas yang siap bercakap-cakap, mengoreksi kesalahanmu, dan memandumu memahami aturan tata bahasa 24 jam sehari.</p>
+            </div>
+             <div class="showcase-visual" style="background: var(--dark); color: white; flex-direction: column; text-align:center;">
+                <h4 style="margin-bottom: 15px; color: var(--secondary);">AI Chat</h4>
+                <div class="lang-text" data-id='"Bagaimana cara pakai Present Perfect?"' data-en='"How do I use Present Perfect?"' style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 10px; width: 80%;">"Bagaimana cara pakai Present Perfect?"</div>
+             </div>
         </div>
     </section>
 
     <footer>
         <h2>TenseGO</h2>
-        <p style="margin-top: 10px; color: #94A3B8;">Master Your English, Shape Your Future.</p>
+        <p class="lang-text" style="margin-top: 10px; color: #94A3B8;" 
+           data-id="Pindai. Pecahkan. Kuasai Bahasa Inggris." 
+           data-en="Scan. Pop. Master English.">Pindai. Pecahkan. Kuasai Bahasa Inggris.</p>
         <div class="footer-links">
-            <a href="privacy/">Privacy Policy</a>
-            <a href="mailto:cyberefforts@gmail.com">Support</a>
+            <a href="privacy/" class="lang-text" data-id="Kebijakan Privasi" data-en="Privacy Policy">Kebijakan Privasi</a>
+            <a href="mailto:cyberefforts@gmail.com" class="lang-text" data-id="Hubungi Kami" data-en="Contact Support">Hubungi Kami</a>
         </div>
-        <p style="margin-top: 20px; font-size: 0.8rem; color: #64748B;">&copy; 2026 REPLACE.ID. All rights reserved.</p>
+        <p style="margin-top: 20px; font-size: 0.8rem; color: #64748B;">&copy; 2026 REPLACE.ID. <span class="lang-text" data-id="Hak cipta dilindungi." data-en="All rights reserved.">Hak cipta dilindungi.</span></p>
     </footer>
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {
-            const cards = document.querySelectorAll('.feature-card');
+            const langToggleBtn = document.getElementById('langToggle');
+            const translatableElements = document.querySelectorAll('.lang-text');
             
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('show');
+            // Default adalah Bahasa Indonesia ('id')
+            let currentLang = 'id';
+
+            langToggleBtn.addEventListener('click', function() {
+                // Tukar bahasa
+                currentLang = currentLang === 'id' ? 'en' : 'id';
+                
+                // Ubah teks di tombol (Jika sedang ID, tampilkan tombol untuk ke EN)
+                langToggleBtn.innerHTML = currentLang === 'id' ? '🌐 EN' : '🌐 ID';
+                document.documentElement.lang = currentLang;
+
+                // Loop semua elemen dan ganti teksnya
+                translatableElements.forEach(el => {
+                    const newText = el.getAttribute(`data-${currentLang}`);
+                    if (newText) {
+                        el.innerHTML = newText;
                     }
                 });
-            }, { threshold: 0.1 });
-
-            cards.forEach(card => {
-                observer.observe(card);
             });
         });
     </script>
